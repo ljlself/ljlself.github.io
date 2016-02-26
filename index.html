@@ -1,0 +1,11 @@
+---
+layout: homepage
+title: OUTER HEAVEA
+---
+<div class="right">
+	<ul class="right_side_articles">
+    {% for post in site.posts %}
+      <li class="right_side_articles_li"><span class="right_side_articles_date">{{ post.date | date_to_string }}</span> <br> <a class="right_side_articles_title" href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul> 
+</div>

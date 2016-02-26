@@ -1,0 +1,46 @@
+h1{
+	font-family: 'Times';
+	font-size: 30px;
+	color: black;
+	text-align: center;
+	margin-top: 50px;
+}
+h2{
+	font-family: 'Times';
+	font-size: 20px;
+	color: gray;
+	margin-left: 50%;
+	margin-right: 0;
+}
+h3{
+	font-size: 25px;
+	font-style: italic;
+	text-align: left;
+	color: black;
+	margin-bottom: 0;
+}
+h4{
+	margin-bottom: 0;
+	font-weight: bold;
+}
+hr{
+	height:1px;
+	border:none;
+	border-top: 1px solid gray;
+	width: 25%;
+	margin-left: 0;
+}
+blockquote {     
+  	color: #666666;
+    margin-left: 20;
+    padding-left: 3em;
+    border-left: 0.5em #EEE solid; 
+}
+pre, code{
+	font-family: Monaco;
+    font-size: 10pt;
+    border: none;
+    border-radius: 3px;
+    background-color: #F8F8F8;
+    color: inherit;
+}

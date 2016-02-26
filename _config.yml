@@ -1,0 +1,6 @@
+markdown: kramdown
+markdown_ext: markdown,mkd,mkdn,md
+encoding: utf-8
+highlighter: rouge
+kramdown:
+  input: GFM

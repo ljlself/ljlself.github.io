@@ -1,0 +1,90 @@
+/* latin-ext */
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'), url(http://fonts.gstatic.com/s/gentiumbookbasic/v7/IRFxB2matTxrjZt6a3FUnszm0DvNGU8YAOZV-OC8gkD3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Gentium Book Basic';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gentium Book Basic'), local('GentiumBookBasic'), url(http://fonts.gstatic.com/s/gentiumbookbasic/v7/IRFxB2matTxrjZt6a3FUnjHxYFfSxJ-QC83SOBxk38Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.site{
+	font-family: 'Gentium Book Basic','sans-serif';
+	width: 70%;  
+	margin-right: auto;  
+	margin-left: auto;   
+	padding: 0px;
+}
+
+.head_name{
+	font-family: 'sans-serif', 'Times';
+	font-size: 40px;
+	font-weight: bold;
+	margin-top:30px;
+	margin-bottom: 0px;
+	text-align: left;
+}
+.head_name_href{
+	color: #5D0051;
+}
+.head_description{
+	font-size: 25px;
+	font-style: italic;
+	font-family: 'sans-serif', 'Times';
+	color: #5D0051;
+	margin-top: 2px;
+	text-align: left;
+	margin-bottom: 0;
+}
+.head_line{
+	height:1px;
+	border:none;
+	border-top: 1px solid #5D0051;
+	width: 100%;
+}
+.left{
+	text-align: left;
+	width: 25%;
+	float: left;
+}
+.right{
+	width:	75%;
+	float: left;
+}
+
+a{
+	text-decoration : none
+} 
+
+.left_side_list{
+	color:#1079ac;
+	padding: 2px;
+	margin-top: 2px;
+	list-style-type:none;
+}
+.left_side_title {
+ 	font-family: 'sans-serif';
+	margin-bottom: 2px;
+	color: #5D0051;
+}
+.right_side_articles_li{
+	margin-bottom: 10px;
+}
+.right_side_articles_title{
+	color: #5D0051;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'sans-serif';
+}
+.right_side_articles_date{
+	font-size:15px;
+	line-height:1;
+	color:#9EABB3;
+}
