@@ -5,7 +5,7 @@ title: x86 Segmentation and Paging Overview
 
 # x86 Segmentation and Paging Overview
 
-## ------Logical, Linear and Physical Address
+## ------Logical,  Linear and Physical Address
 
 ### 简介
 ---
@@ -33,7 +33,7 @@ Linear Address(线性地址)：
 ### Overview
 ---
 32Bit-Paging，4KBytes Page     
-![Overview](/image/x86_segmentation_and_paging/overview.png "")
+![Overview](/image/x86_segmentation_and_paging/overview.png)
 
 ### Segmentation : (Logical Address -> Linear Address）
 ---
