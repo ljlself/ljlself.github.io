@@ -5,7 +5,7 @@ title: x86 Segmentation and Paging Overview
 
 # x86 Segmentation and Paging Overview
 
-## ------A 32 Bit-Paging Perspective
+## ------Logical, Linear and Physical Address
 
 ### 简介
 ---
@@ -32,10 +32,10 @@ Linear Address(线性地址)：
 
 ### Overview
 ---
-32Bit-Paging，4KBytes Page
+32Bit-Paging，4KBytes Page     
 ![Overview](/image/x86_segmentation_and_paging/overview.png "")
 
-### Segmentation：（Logical Address -> Linear Address）
+### Segmentation : (Logical Address -> Linear Address）
 ---
 Segment Registers
 
@@ -145,7 +145,7 @@ Segmentation过程：
         - 得到段描述符之后再根据段中包含的基址与之前的Offset相加，得到32位的线性地址。
     - ![Segmentation](/image/x86_segmentation_and_paging/segmentation.png )
 
-### Paging:(Linear Address -> Physical Address)
+### Paging : (Linear Address -> Physical Address)
 ---
 简介
 
