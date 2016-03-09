@@ -5,7 +5,7 @@ title: x86 Segmentation and Paging Overview
 
 # x86 Segmentation and Paging Overview
 
-## a 32 Bit-Paging Perspective
+## ------a 32 Bit-Paging Perspective
 
 ### 简介
 ---
