@@ -3,9 +3,11 @@ layout: article
 title: x86 Segmentation and Paging Overview
 ---
 
-#x86 Segmentation and Paging Overview
+# x86 Segmentation and Paging Overview
 
-###简介
+## ------32 Bit-Paging
+
+### 简介
 
 x86的内存管理是段页式的，既有分段也有分页。
 
@@ -14,7 +16,7 @@ x86的内存管理是段页式的，既有分段也有分页。
 - Paging
     - 实现了传统的内存管理需求。
 
-###概念
+### 概念
 
 Logic Address(逻辑地址)：
 
@@ -28,12 +30,12 @@ Linear Address(线性地址)：
 - 在x86的Segmentation中，进入分段之前对应的地址称为逻辑地址，而分段之后对应的地址则称为线性地址（基址+偏移量）。在Paging中，进入分页之前对应的是线性地址，进过分页之后对应的则是物理地址。
 - 所有的Segments包含的地址空间，及所有的线性地址构成的地址空间，称为Linear Address Space。
 
-###Overview
+### Overview
 
 32Bit-Paging，4KBytes Page
-![Overview](/image/x86_segmentation_and_paging/overview.jpg "")
+![Overview](/image/x86_segmentation_and_paging/overview.png "")
 
-###Segmentation：（Logical Address -> Linear Address）
+### Segmentation：（Logical Address -> Linear Address）
 
 Segment Registers
 
@@ -55,7 +57,7 @@ Segment Registers
 Selector(选择子)：
 
 - 在x86中，要找到某个段，需要通过Selector来定位。将Selector装入6个段寄存器中的一个。每个Seletor为16位。前13位代表段描述符表项编号，如果描述符为0则说明当前段寄存器不可用，后一位代表使用LDT还是GDT。最后两位代表优先级与保护有关。
-- ![Selector](/image/x86_segmentation_and_paging/selector.jpg )
+- ![Selector](/image/x86_segmentation_and_paging/selector.png )
     - Index: Selector的前13位，段描述符索引，表明所需要的段描述符在描述符表中的位置。
     - TI: 只占1位，值为0或1，表明需要定位的段描述符在GDT中还是在LDT中。
     - RPL(Request Privilege Level)：代表选择子的特权等级，共0-3四个特权等级。
@@ -80,12 +82,12 @@ Descroptor Table（段描述符表）：
     - Local Descriptor的访问是先通过Selector在GDT中寻找，找到LDTR的地址后再根据LDTR中的信息找到对应的Local Descriptor。
 - GDT(Global Descriptor Table)：
     - 全局描述符表，描述系统等。一个处理器只有一个，所有程序共享一个。GDT的基址和长度上限存放在寄存器GDTR中，作为入口。
-- ![Descriptor Table](/image/x86_segmentation_and_paging/descriptor_table.jpg)
+- ![Descriptor Table](/image/x86_segmentation_and_paging/descriptor_table.png)
 
 Descriptor（段描述符)：
 
 - 存放在段描述符表（即GDT和LGT）中的数据结构。大小为一个双字，64位。保存着有关段的全部信息。
-- ![Descriptor](/image/x86_segmentation_and_paging/descriptor.jpg)
+- ![Descriptor](/image/x86_segmentation_and_paging/descriptor.png)
 - S位
     - [word 2]bit 12
     - 描述符分为两种，由描述符中的S位表示
@@ -103,10 +105,10 @@ Descriptor（段描述符)：
     - [word 2]bit 8 : bit 11
     - Code and Data Descriptor
         - 由4位构成，最高位11位确定Descriptor到底是Code Descriptor还是Data Descriptor，8，9，10三位分别代表了accessed (A), write-enable (W), and expansion-direction (E)。
-        - ![Code and Data Descriptor](/image/x86_segmentation_and_paging/code_and_data_descriptor.jpg)
+        - ![Code and Data Descriptor](/image/x86_segmentation_and_paging/code_and_data_descriptor.png)
     - System Segment and Gate Descriptor
         - 由四位构成，最高位确定了是System Segment Descriptor还是Gate Descriptor
-        - ![System Segment and Gate Descriptor](/image/x86_segmentation_and_paging/system_segment_and_gate_descriptor.jpg)
+        - ![System Segment and Gate Descriptor](/image/x86_segmentation_and_paging/system_segment_and_gate_descriptor.png)
 - Base Address位
     - 包含基址的信息。共32位，由三段构成。
     - [word 1]bit 16 : bit 31 + [word 2]bit 0 : bit 7 + [word 2]bit 24 : bit 31
@@ -141,9 +143,9 @@ Segmentation过程：
         - 根据LDTR中的Selector来确定LDT段的基址（即该LDT段在GDT中的起始位置）
         - 根据逻辑地址的Selector和LDT段的基址找到对应的段描述符。
         - 得到段描述符之后再根据段中包含的基址与之前的Offset相加，得到32位的线性地址。
-    - ![Segmentation](/image/x86_segmentation_and_paging/segmentation.jpg )
+    - ![Segmentation](/image/x86_segmentation_and_paging/segmentation.png )
 
-###Paging:(Linear Address -> Physical Address)
+### Paging:(Linear Address -> Physical Address)
 
 简介
 
