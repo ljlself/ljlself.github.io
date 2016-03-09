@@ -4,7 +4,9 @@ title: x86 Segmentation and Paging Overview
 ---
 
 #x86 Segmentation and Paging Overview
+
 ###简介
+
 x86的内存管理是段页式的，既有分段也有分页。
 
 - Segmentation
@@ -13,6 +15,7 @@ x86的内存管理是段页式的，既有分段也有分页。
     - 实现了传统的内存管理需求。
 
 ###概念
+
 Logic Address(逻辑地址)：
 
 -  指令中出现的地址都是逻辑地址，逻辑地址并不是一个真实存在的地址，只是相对地址，需要经过转换才能成为物理地址，从而找到该地址上的内容。
@@ -26,10 +29,12 @@ Linear Address(线性地址)：
 - 所有的Segments包含的地址空间，及所有的线性地址构成的地址空间，称为Linear Address Space。
 
 ###Overview
+
 32Bit-Paging，4KBytes Page
 ![Overview](/image/x86_segmentation_and_paging/overview.jpg "")
 
 ###Segmentation：（Logical Address -> Linear Address）
+
 Segment Registers
 
 - 为了减少寻址时间和减少代码的复杂度，处理器提供了6个寄存器来存放Selector。每个寄存器都支持特定类型内存的引用（如code，stack和data）。程序要运行需要最基本的几个如代码段，数据段和堆栈段，对应了Code Segment Register，Stack Segment Register和Data Segment Register。这些寄存器负责存放对应的Segment Selector。
@@ -139,6 +144,7 @@ Segmentation过程：
     - ![Segmentation](/image/x86_segmentation_and_paging/segmentation.jpg )
 
 ###Paging:(Linear Address -> Physical Address)
+
 简介
 
 - 如果禁止Paging，那么线性地址为直接被转换为物理地址送往Memory。此时为Pure Segmentation的方案。
@@ -154,6 +160,7 @@ Segmentation过程：
 todo
 
 ### 参考文献
+
 ---
 [1] Intel 64 and IA-32 Architectures Software Developer’s Manual. Volume 3A: System Programming Guide, Part 1. May, 2011.
 [2] Andrew S.Tanenbaum. Modern Operating Systems (3rd Edition). 2009.
