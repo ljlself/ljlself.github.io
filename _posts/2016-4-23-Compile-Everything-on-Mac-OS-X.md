@@ -1,18 +1,70 @@
 ---
 layout: article
-title: Compile OpenJDK on Max OS X
+title: Compile Everything on Max OS X
 ---
 
-# Compile OpenJDK on Max OS X
+# Compile Everything on Max OS X
 
-### Steps
+### LLVM and Clang
 ---
 
 * 下载source code
-    * 若采用mercurial，则运行如下命令。第一个命令只会下载readme,makefile等文件。脚本里的命令才真正clone项目的各个模块。
-        `hg clone http://hg.openjdk.java.net/jdk7u/jdk7u`     
-        `cd jdk7u`
-        `sh get_source.sh`
+    * 采用svn, 首先建立想存放LLVM代码的目录，然后运行`svn co`    
+        `cd YourDir`    
+        `svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm`
+    * 等待下载完成。
+    * 下载clang,放在 `llvm/tools/`下    
+        `cd llvm/tools`     
+        `svn co http://llvm.org/svn/llvm-project/cfe/trunk clang`
+    * 等待下载完成
+    * 下载compiler-RT,放在`llvm/projects/`下    
+        `cd llvm/projects`    
+        `svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt`    
+    * 等待下载完成
+    * 还有一些可选的项目，可以参考上述方式下载。
+* 准备工作
+    * 需要用到cmake,若未安装cmake需先安装。若采用brew，则运行`brew install cmake`
+    * 项目结构
+        * bingdings/
+        * cmake/
+        * CMakeList.txt
+        * CODE_OWNERS.TXT
+        * configure
+        * CREDITS.TXT
+        * docs/
+        * examples/
+        * include/
+        * lib/
+        * LICENSE.TXT
+        * llvm.spec.in
+        * LLVMBuild.txt
+        * projects/
+        * README.txt
+        * resources/
+        * test/
+        * tools/
+        * unittests/
+        * utils/
+* `make`
+    * 在当前目录下建立build目录
+        * `mkdir build`
+        * `cd build`
+    * 执行`cmake -G "Unix Makefiles" ../`运行完成之后在build文件夹下会多出许多文件，如makefile等。
+    * 执行`make`
+    * 等待执行完成。
+        * 最后一步类似于`[100%] Built target yaml2obj`
+    * 此时build文件夹下存放的就是刚才编译好的llvm了。
+* 完成    
+    * 运行build/bin/下的`clang -v` 可以与系统自带的做对比。
+
+### OpenJDK (Failed)
+---
+
+* 下载source code
+    * 若采用mercurial，则运行如下命令。第一个命令只会下载readme,makefile等文件。脚本里的命令才真正clone项目的各个模块。    
+        `hg clone http://hg.openjdk.java.net/jdk7u/jdk7u`         
+        `cd jdk7u`     
+        `sh get_source.sh`     
     * 若不采用mercurial，则去任何能下载到的地方下载source code.
 * 准备工作
     * 项目结构
@@ -68,11 +120,11 @@ title: Compile OpenJDK on Max OS X
                 + 进入CUPS目录，执行`make`
                 + 设置环境变量,设置为make完成之后的CUPS所在目录
                 + `export ALT_CUPS_HEADERS_PATH=$YOURCUPSFOLDER`
-* `make`（FAILED UNHANDLING）
+* `make`（FAILED）
     * 进入项目所在目录，执行`make`
     * 报错(节选)
         * `/jdk7u/hotspot/src/share/vm/adlc/adlparse.cpp:3217:71: error: equality comparison with extraneous parentheses [-Werror,-Wparentheses-equality]`
-        * `if ( ((primary = get_ident_or_literal_constant("primary opcode")) == NULL) ) {
+        * `if ( ((primary = get_ident_or_literal_constant("primary opcode")) == NULL) ) {    
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~ `
         * `make[8]: *** [../generated/adfiles/filebuff.o] Error 1`
 
